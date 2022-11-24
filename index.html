@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kolko i Krzyzyk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo&family=Mukta:wght@700&family=Outfit:wght@700&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        /* background: rgb(212, 157, 74); */
+        /* background: rgb(18, 89, 196); */
+        background: #2d289c;
+        background-image: linear-gradient(
+          90deg,
+          #362fb5 0%,
+          #cf6432 50%,
+          #6828a7 100%
+        );
+        background-size: 300% 300%;
+        animation: bglayer1 6s infinite ease-in-out;
+        /* background: #000; */
+        font-family: "Arimo", sans-serif;
+      }
+      #a {
+        /* background-color: rgb(245, 187, 132); */
+        background-color: rgba(187, 142, 74, 1);
+        background-image: linear-gradient(
+          90deg,
+          #362fb5 0%,
+          #cf6432 50%,
+          #6828a7 100%
+        );
+        font-family: "Arimo", sans-serif;
+        position: fixed;
+        top: 500px;
+        left: 0px;
+        width: 100%;
+        height: 50%;
+        border-radius: 200% 150% 0% 0%;
+        background-size: 300% 300%;
+        /* animation: bglayer1 6s infinite ease-in-out; */
+      }
+      .oh {
+        display: grid;
+        place-items: center;
+      }
+      table {
+        /* border: 10px solid rgb(177, 66, 221); */
+        border-radius: 8px;
+        margin: 45px;
+        padding: 1px;
+        background: rgb(245, 245, 245);
+      }
+      #klocek1,
+      #klocek2,
+      #klocek3,
+      #klocek4,
+      #klocek5,
+      #klocek6,
+      #klocek7,
+      #klocek8,
+      #klocek9 {
+        height: 85px;
+        width: 85px;
+        /* border: 5px solid rgb(156, 111, 48); */
+        /* border-radius: 5px; */
+        cursor: pointer;
+        font-size: 72.5px;
+        /* color: rgb(156, 111, 48); */
+        /* background: rgb(236, 235, 235); */
+        /* margin: 50px; */
+        padding: 13px;
+        border-radius: 5px;
+      }
+      #klocek1 {
+        border-right: 5px solid rgb(11, 80, 126);
+        /* border-bottom: 5px solid rgb(156, 111, 48); */
+        border-bottom: 5px solid rgb(11, 80, 126);
+      }
+      #klocek2 {
+        border-bottom: 5px solid rgb(11, 80, 126);
+      }
+      #klocek3 {
+        border-left: 5px solid rgb(11, 80, 126);
+        border-bottom: 5px solid rgb(11, 80, 126);
+      }
+      #klocek4 {
+        border-right: 5px solid rgb(11, 80, 126);
+        border-bottom: 5px solid rgb(11, 80, 126);
+      }
+      #klocek5 {
+        border-bottom: 5px solid rgb(11, 80, 126);
+      }
+      #klocek6 {
+        border-left: 5px solid rgb(11, 80, 126);
+        border-bottom: 5px solid rgb(11, 80, 126);
+      }
+      #klocek7 {
+        border-right: 5px solid rgb(11, 80, 126);
+      }
+      #klocek9 {
+        border-left: 5px solid rgb(11, 80, 126);
+      }
+      .gold {
+        /* color: rgb(156, 111, 50); */
+        color: #2f43b5;
+      }
+      .green {
+        background: rgb(172, 255, 172);
+      }
+      .red {
+        background: rgb(247, 92, 92);
+        color: white;
+      }
+      .blue {
+        background: rgb(161, 247, 247);
+      }
+      /* .hover {
+        opacity: 0.5;
+      } */
+
+      /* .down {
+        background: grey;
+        margin-left: -8px;
+        margin-right: -8px;
+        height: 450px;
+        color: grey;
+      } */
+
+      @keyframes bglayer1 {
+        0% {
+          background-position: 0 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0 50%;
+        }
+      }
+    </style>
+
+    <div class="oh">
+      <table>
+        <tr>
+          <th id="klocek1" class="gold"></th>
+          <th id="klocek2" class="gold"></th>
+          <th id="klocek3" class="gold"></th>
+        </tr>
+        <tr>
+          <th id="klocek4" class="gold"></th>
+          <th id="klocek5" class="gold"></th>
+          <th id="klocek6" class="gold"></th>
+        </tr>
+        <tr>
+          <th id="klocek7" class="gold"></th>
+          <th id="klocek8" class="gold"></th>
+          <th id="klocek9" class="gold"></th>
+        </tr>
+      </table>
+    </div>
+    <div id="bg"></div>
+    <div id="bg2"></div>
+    <!-- <button id="aa" onclick="reset()"></button> -->
+    <script>
+      "use strict";
+      let ile = 9;
+      let ilosc = 0;
+      let o = 0;
+      let x = 1;
+
+      let winoo = 0;
+      let moge1 = 0;
+      let moge2 = 0;
+      let moge3 = 0;
+      let moge4 = 0;
+      let moge5 = 0;
+      let moge6 = 0;
+      let moge7 = 0;
+      let moge8 = 0;
+      let moge9 = 0;
+
+      //  sprawdzanie gdzie co i jak
+
+      let x1 = 0;
+      let x2 = 0;
+      let x3 = 0;
+      let x4 = 0;
+      let x5 = 0;
+      let x6 = 0;
+      let x7 = 0;
+      let x8 = 0;
+      let x9 = 0;
+
+      let o1 = 0;
+      let o2 = 0;
+      let o3 = 0;
+      let o4 = 0;
+      let o5 = 0;
+      let o6 = 0;
+      let o7 = 0;
+      let o8 = 0;
+      let o9 = 0;
+
+      const box1 = document.querySelector("#klocek1");
+      const box2 = document.querySelector("#klocek2");
+      const box3 = document.querySelector("#klocek3");
+
+      const box4 = document.querySelector("#klocek4");
+      const box5 = document.querySelector("#klocek5");
+      const box6 = document.querySelector("#klocek6");
+
+      const box7 = document.querySelector("#klocek7");
+      const box8 = document.querySelector("#klocek8");
+      const box9 = document.querySelector("#klocek9");
+
+      // 1
+
+      box1.addEventListener("mouseover", function () {
+        box1.classList.add("hover");
+        if (o == 1 && x == 0 && moge1 == 0) {
+          box1.innerHTML = "X";
+        } else if (o == 0 && x == 1 && moge1 == 0) {
+          box1.innerHTML = "O";
+        }
+      });
+      box1.addEventListener("mouseleave", function () {
+        box1.classList.remove("hover");
+        if (moge1 == 0) {
+          box1.innerHTML = "";
+        }
+      });
+      box1.addEventListener("click", function () {
+        if (ilosc == 0 && moge1 == 0) {
+          box1.classList.add("blue");
+          ilosc++;
+        } else if (ilosc == 1 && moge1 == 0) {
+          box1.classList.add("green");
+          ilosc--;
+        }
+        if (o == 1 && x == 0 && moge1 == 0) {
+          box1.innerHTML = "X";
+          o--;
+          x++;
+          moge1++;
+          x1++;
+          ile--;
+        } else if (o == 0 && x == 1 && moge1 == 0) {
+          box1.innerHTML = "O";
+          o++;
+          x--;
+          moge1++;
+          o1++;
+          ile--;
+        }
+        win();
+      });
+
+      // 2
+
+      box2.addEventListener("mouseover", function () {
+        box2.classList.add("hover");
+        if (o == 1 && x == 0 && moge2 == 0) {
+          box2.innerHTML = "X";
+        } else if (o == 0 && x == 1 && moge2 == 0) {
+          box2.innerHTML = "O";
+        }
+      });
+      box2.addEventListener("mouseleave", function () {
+        box2.classList.remove("hover");
+        if (moge2 == 0) {
+          box2.innerHTML = "";
+        }
+      });
+      box2.addEventListener("click", function () {
+        if (ilosc == 0 && moge2 == 0) {
+          box2.classList.add("blue");
+          ilosc++;
+        } else if (ilosc == 1 && moge2 == 0) {
+          box2.classList.add("green");
+          ilosc--;
+        }
+        if (o == 1 && x == 0 && moge2 == 0) {
+          box2.innerHTML = "X";
+          o--;
+          x++;
+          moge2++;
+          x2++;
+          ile--;
+        } else if (o == 0 && x == 1 && moge2 == 0) {
+          box2.innerHTML = "O";
+          o++;
+          x--;
+          moge2++;
+          o2++;
+          ile--;
+        }
+        win();
+      });
+      // 3
+
+      box3.addEventListener("mouseover", function () {
+        box3.classList.add("hover");
+        if (o == 1 && x == 0 && moge3 == 0) {
+          box3.innerHTML = "X";
+        } else if (o == 0 && x == 1 && moge3 == 0) {
+          box3.innerHTML = "O";
+        }
+      });
+      box3.addEventListener("mouseleave", function () {
+        box3.classList.remove("hover");
+        if (moge3 == 0) {
+          box3.innerHTML = "";
+        }
+      });
+      box3.addEventListener("click", function () {
+        if (ilosc == 0 && moge3 == 0) {
+          box3.classList.add("blue");
+          ilosc++;
+        } else if (ilosc == 1 && moge3 == 0) {
+          box3.classList.add("green");
+          ilosc--;
+        }
+        if (o == 1 && x == 0 && moge3 == 0) {
+          box3.innerHTML = "X";
+          o--;
+          x++;
+          moge3++;
+          x3++;
+          ile--;
+        } else if (o == 0 && x == 1 && moge3 == 0) {
+          box3.innerHTML = "O";
+          o++;
+          x--;
+          moge3++;
+          o3++;
+          ile--;
+        }
+        win();
+      });
+      // 4
+
+      box4.addEventListener("mouseover", function () {
+        box4.classList.add("hover");
+        if (o == 1 && x == 0 && moge4 == 0) {
+          box4.innerHTML = "X";
+        } else if (o == 0 && x == 1 && moge4 == 0) {
+          box4.innerHTML = "O";
+        }
+      });
+      box4.addEventListener("mouseleave", function () {
+        box4.classList.remove("hover");
+        if (moge4 == 0) {
+          box4.innerHTML = "";
+        }
+      });
+      box4.addEventListener("click", function () {
+        if (ilosc == 0 && moge4 == 0) {
+          box4.classList.add("blue");
+          ilosc++;
+        } else if (ilosc == 1 && moge4 == 0) {
+          box4.classList.add("green");
+          ilosc--;
+        }
+        if (o == 1 && x == 0 && moge4 == 0) {
+          box4.innerHTML = "X";
+          o--;
+          x++;
+          moge4++;
+          x4++;
+          ile--;
+        } else if (o == 0 && x == 1 && moge4 == 0) {
+          box4.innerHTML = "O";
+          o++;
+          x--;
+          moge4++;
+          o4++;
+          ile--;
+        }
+        win();
+      });
+
+      // 5
+
+      box5.addEventListener("mouseover", function () {
+        box5.classList.add("hover");
+        if (o == 1 && x == 0 && moge5 == 0) {
+          box5.innerHTML = "X";
+        } else if (o == 0 && x == 1 && moge5 == 0) {
+          box5.innerHTML = "O";
+        }
+      });
+      box5.addEventListener("mouseleave", function () {
+        box5.classList.remove("hover");
+        if (moge5 == 0) {
+          box5.innerHTML = "";
+        }
+      });
+      box5.addEventListener("click", function () {
+        if (ilosc == 0 && moge5 == 0) {
+          box5.classList.add("blue");
+          ilosc++;
+        } else if ((ilosc == 1) & (moge5 == 0)) {
+          box5.classList.add("green");
+          ilosc--;
+        }
+        if (o == 1 && x == 0 && moge5 == 0) {
+          box5.innerHTML = "X";
+          o--;
+          x++;
+          moge5++;
+          x5++;
+          ile--;
+        } else if (o == 0 && x == 1 && moge5 == 0) {
+          box5.innerHTML = "O";
+          o++;
+          x--;
+          moge5++;
+          o5++;
+          ile--;
+        }
+        win();
+      });
+      // 6
+
+      box6.addEventListener("mouseover", function () {
+        box6.classList.add("hover");
+        if (o == 1 && x == 0 && moge6 == 0) {
+          box6.innerHTML = "X";
+        } else if (o == 0 && x == 1 && moge6 == 0) {
+          box6.innerHTML = "O";
+        }
+      });
+      box6.addEventListener("mouseleave", function () {
+        box6.classList.remove("hover");
+        if (moge6 == 0) {
+          box6.innerHTML = "";
+        }
+      });
+      box6.addEventListener("click", function () {
+        if (ilosc == 0 && moge6 == 0) {
+          box6.classList.add("blue");
+          ilosc++;
+        } else if (ilosc == 1 && moge6 == 0) {
+          box6.classList.add("green");
+          ilosc--;
+        }
+        if (o == 1 && x == 0 && moge6 == 0) {
+          box6.innerHTML = "X";
+          o--;
+          x++;
+          moge6++;
+          x6++;
+          ile--;
+        } else if (o == 0 && x == 1 && moge6 == 0) {
+          box6.innerHTML = "O";
+          o++;
+          x--;
+          moge6++;
+          o6++;
+          ile--;
+        }
+        win();
+      });
+
+      // 7
+
+      box7.addEventListener("mouseover", function () {
+        box7.classList.add("hover");
+        if (o == 1 && x == 0 && moge7 == 0) {
+          box7.innerHTML = "X";
+        } else if (o == 0 && x == 1 && moge7 == 0) {
+          box7.innerHTML = "O";
+        }
+      });
+      box7.addEventListener("mouseleave", function () {
+        box7.classList.remove("hover");
+        if (moge7 == 0) {
+          box7.innerHTML = "";
+        }
+      });
+      box7.addEventListener("click", function () {
+        if (ilosc == 0 && moge7 == 0) {
+          box7.classList.add("blue");
+          ilosc++;
+        } else if (ilosc == 1 && moge7 == 0) {
+          box7.classList.add("green");
+          ilosc--;
+        }
+        if (o == 1 && x == 0 && moge7 == 0) {
+          box7.innerHTML = "X";
+          o--;
+          x++;
+          moge7++;
+          x7++;
+          ile--;
+        } else if (o == 0 && x == 1 && moge7 == 0) {
+          box7.innerHTML = "O";
+          o++;
+          x--;
+          moge7++;
+          o7++;
+          ile--;
+        }
+        win();
+      });
+
+      // 8
+
+      box8.addEventListener("mouseover", function () {
+        box8.classList.add("hover");
+        if (o == 1 && x == 0 && moge8 == 0) {
+          box8.innerHTML = "X";
+        } else if (o == 0 && x == 1 && moge8 == 0) {
+          box8.innerHTML = "O";
+        }
+      });
+      box8.addEventListener("mouseleave", function () {
+        box8.classList.remove("hover");
+        if (moge8 == 0) {
+          box8.innerHTML = "";
+        }
+      });
+      box8.addEventListener("click", function () {
+        if (ilosc == 0 && moge8 == 0) {
+          box8.classList.add("blue");
+          ilosc++;
+        } else if (ilosc == 1 && moge8 == 0) {
+          box8.classList.add("green");
+          ilosc--;
+        }
+        if (o == 1 && x == 0 && moge8 == 0) {
+          box8.innerHTML = "X";
+          o--;
+          x++;
+          moge8++;
+          x8++;
+          ile--;
+        } else if (o == 0 && x == 1 && moge8 == 0) {
+          box8.innerHTML = "O";
+          o++;
+          x--;
+          moge8++;
+          o8++;
+          ile--;
+        }
+        win();
+      });
+
+      // 9
+
+      box9.addEventListener("mouseover", function () {
+        box9.classList.add("hover");
+        if (o == 1 && x == 0 && moge9 == 0) {
+          box9.innerHTML = "X";
+        } else if (o == 0 && x == 1 && moge9 == 0) {
+          box9.innerHTML = "O";
+        }
+      });
+      box9.addEventListener("mouseleave", function () {
+        box9.classList.remove("hover");
+        if (moge9 == 0) {
+          box9.innerHTML = "";
+        }
+      });
+      box9.addEventListener("click", function () {
+        if (ilosc == 0 && moge9 == 0) {
+          box9.classList.add("blue");
+          ilosc++;
+        } else if (ilosc == 1 && moge9 == 0) {
+          box9.classList.add("green");
+          ilosc--;
+        }
+        if (o == 1 && x == 0 && moge9 == 0) {
+          box9.innerHTML = "X";
+          o--;
+          x++;
+          moge9++;
+          x9++;
+          ile--;
+        } else if (o == 0 && x == 1 && moge9 == 0) {
+          box9.innerHTML = "O";
+          o++;
+          x--;
+          moge9++;
+          o9++;
+          ile--;
+        }
+        win();
+      });
+
+      // RESET
+
+      function reset() {
+        ilosc = 0;
+        ile = 9;
+        o = 0;
+        x = 1;
+        winoo = 0;
+        moge1 = 0;
+        moge2 = 0;
+        moge3 = 0;
+        moge4 = 0;
+        moge5 = 0;
+        moge6 = 0;
+        moge7 = 0;
+        moge8 = 0;
+        moge9 = 0;
+
+        x1 = 0;
+        x2 = 0;
+        x3 = 0;
+        x4 = 0;
+        x5 = 0;
+        x6 = 0;
+        x7 = 0;
+        x8 = 0;
+        x9 = 0;
+
+        o1 = 0;
+        o2 = 0;
+        o3 = 0;
+        o4 = 0;
+        o5 = 0;
+        o6 = 0;
+        o7 = 0;
+        o8 = 0;
+        o9 = 0;
+
+        box1.innerHTML = "";
+        box2.innerHTML = "";
+        box3.innerHTML = "";
+        box4.innerHTML = "";
+        box5.innerHTML = "";
+        box6.innerHTML = "";
+        box7.innerHTML = "";
+        box8.innerHTML = "";
+        box9.innerHTML = "";
+
+        box1.classList.remove("blue");
+        box1.classList.remove("green");
+        box1.classList.remove("red");
+
+        box2.classList.remove("blue");
+        box2.classList.remove("green");
+        box2.classList.remove("red");
+
+        box3.classList.remove("blue");
+        box3.classList.remove("green");
+        box3.classList.remove("red");
+
+        box4.classList.remove("blue");
+        box4.classList.remove("green");
+        box4.classList.remove("red");
+
+        box5.classList.remove("blue");
+        box5.classList.remove("green");
+        box5.classList.remove("red");
+
+        box6.classList.remove("blue");
+        box6.classList.remove("green");
+        box6.classList.remove("red");
+
+        box7.classList.remove("blue");
+        box7.classList.remove("green");
+        box7.classList.remove("red");
+
+        box8.classList.remove("blue");
+        box8.classList.remove("green");
+        box8.classList.remove("red");
+
+        box9.classList.remove("blue");
+        box9.classList.remove("green");
+        box9.classList.remove("red");
+      }
+
+      // WHO WIN
+
+      function resecik() {
+        alert("remis");
+        reset();
+      }
+      function wino() {
+        alert("O wins");
+        reset();
+      }
+      function winx() {
+        alert("X wins");
+        reset();
+      }
+      function czaso() {
+        setTimeout("wino()", 100);
+      }
+      function czasx() {
+        setTimeout("winx()", 100);
+      }
+      function win() {
+        // console.log("po " + ile + " " + winoo);
+        if (o4 == 1 && o5 == 1 && o6 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+
+          box4.classList.remove("blue");
+          box5.classList.remove("blue");
+          box6.classList.remove("blue");
+
+          box4.classList.remove("green");
+          box5.classList.remove("green");
+          box6.classList.remove("green");
+
+          box4.classList.add("red");
+          box5.classList.add("red");
+          box6.classList.add("red");
+          winoo = 1;
+          czaso();
+          // wino();
+        }
+        if (x4 == 1 && x5 == 1 && x6 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+          box4.classList.remove("blue");
+          box5.classList.remove("blue");
+          box6.classList.remove("blue");
+
+          box4.classList.remove("green");
+          box5.classList.remove("green");
+          box6.classList.remove("green");
+
+          box4.classList.add("red");
+          box5.classList.add("red");
+          box6.classList.add("red");
+          winoo = 1;
+          czasx();
+        }
+        if (x2 == 1 && x5 == 1 && x8 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+          box2.classList.remove("blue");
+          box5.classList.remove("blue");
+          box8.classList.remove("blue");
+
+          box2.classList.remove("green");
+          box5.classList.remove("green");
+          box8.classList.remove("green");
+
+          box2.classList.add("red");
+          box5.classList.add("red");
+          box8.classList.add("red");
+          winoo = 1;
+          czasx();
+        }
+        if (x1 == 1 && x4 == 1 && x7 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+
+          box1.classList.remove("blue");
+          box4.classList.remove("blue");
+          box7.classList.remove("blue");
+
+          box1.classList.remove("green");
+          box4.classList.remove("green");
+          box7.classList.remove("green");
+
+          box1.classList.add("red");
+          box4.classList.add("red");
+          box7.classList.add("red");
+          winoo = 1;
+          czasx();
+        }
+        if (x1 == 1 && x2 == 1 && x3 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+
+          box1.classList.remove("blue");
+          box2.classList.remove("blue");
+          box3.classList.remove("blue");
+
+          box1.classList.remove("green");
+          box2.classList.remove("green");
+          box3.classList.remove("green");
+
+          box1.classList.add("red");
+          box2.classList.add("red");
+          box3.classList.add("red");
+          winoo = 1;
+          czasx();
+        }
+        if (x3 == 1 && x6 == 1 && x9 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+
+          box3.classList.remove("blue");
+          box6.classList.remove("blue");
+          box9.classList.remove("blue");
+
+          box3.classList.remove("green");
+          box6.classList.remove("green");
+          box9.classList.remove("green");
+
+          box3.classList.add("red");
+          box6.classList.add("red");
+          box9.classList.add("red");
+          winoo = 1;
+          czasx();
+        }
+        if (x7 == 1 && x8 == 1 && x9 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+
+          box7.classList.remove("blue");
+          box8.classList.remove("blue");
+          box9.classList.remove("blue");
+
+          box7.classList.remove("green");
+          box8.classList.remove("green");
+          box9.classList.remove("green");
+
+          box7.classList.add("red");
+          box8.classList.add("red");
+          box9.classList.add("red");
+          winoo = 1;
+          czasx();
+        }
+        if (x1 == 1 && x5 == 1 && x9 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+          box1.classList.remove("blue");
+          box5.classList.remove("blue");
+          box9.classList.remove("blue");
+
+          box1.classList.remove("green");
+          box5.classList.remove("green");
+          box9.classList.remove("green");
+
+          box1.classList.add("red");
+          box5.classList.add("red");
+          box9.classList.add("red");
+          winoo = 1;
+          czasx();
+        }
+        if (x3 == 1 && x5 == 1 && x7 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+
+          box3.classList.remove("blue");
+          box5.classList.remove("blue");
+          box7.classList.remove("blue");
+
+          box3.classList.remove("green");
+          box5.classList.remove("green");
+          box7.classList.remove("green");
+
+          box3.classList.add("red");
+          box5.classList.add("red");
+          box7.classList.add("red");
+          winoo = 1;
+          czasx();
+        }
+        if (o1 == 1 && o4 == 1 && o7 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+
+          box1.classList.remove("blue");
+          box4.classList.remove("blue");
+          box7.classList.remove("blue");
+
+          box1.classList.remove("green");
+          box4.classList.remove("green");
+          box7.classList.remove("green");
+
+          box1.classList.add("red");
+          box4.classList.add("red");
+          box7.classList.add("red");
+          winoo = 1;
+          czaso();
+        }
+        if (o1 == 1 && o2 == 1 && o3 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+          box1.classList.remove("blue");
+          box2.classList.remove("blue");
+          box3.classList.remove("blue");
+
+          box1.classList.remove("green");
+          box2.classList.remove("green");
+          box3.classList.remove("green");
+
+          box1.classList.add("red");
+          box2.classList.add("red");
+          box3.classList.add("red");
+          winoo = 1;
+          czaso();
+        }
+        if (o3 == 1 && o6 == 1 && o9 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+
+          box3.classList.remove("blue");
+          box6.classList.remove("blue");
+          box9.classList.remove("blue");
+
+          box3.classList.remove("green");
+          box6.classList.remove("green");
+          box9.classList.remove("green");
+
+          box3.classList.add("red");
+          box6.classList.add("red");
+          box9.classList.add("red");
+          winoo = 1;
+          czaso();
+        }
+        if (o7 == 1 && o8 == 1 && o9 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+          box7.classList.remove("blue");
+          box8.classList.remove("blue");
+          box9.classList.remove("blue");
+
+          box7.classList.remove("green");
+          box8.classList.remove("green");
+          box9.classList.remove("green");
+
+          box7.classList.add("red");
+          box8.classList.add("red");
+          box9.classList.add("red");
+          winoo = 1;
+          czaso();
+        }
+        if (o1 == 1 && o5 == 1 && o9 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+          box1.classList.remove("blue");
+          box5.classList.remove("blue");
+          box9.classList.remove("blue");
+
+          box1.classList.remove("green");
+          box5.classList.remove("green");
+          box9.classList.remove("green");
+
+          box1.classList.add("red");
+          box5.classList.add("red");
+          box9.classList.add("red");
+          winoo = 1;
+          czaso();
+        }
+        if (o3 == 1 && o5 == 1 && o7 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+          box3.classList.remove("blue");
+          box5.classList.remove("blue");
+          box7.classList.remove("blue");
+
+          box3.classList.remove("green");
+          box5.classList.remove("green");
+          box7.classList.remove("green");
+
+          box3.classList.add("red");
+          box5.classList.add("red");
+          box7.classList.add("red");
+          winoo = 1;
+          czaso();
+        }
+        if (o2 == 1 && o5 == 1 && o8 == 1 && winoo == 0) {
+          moge1 = 1;
+          moge2 = 1;
+          moge3 = 1;
+          moge4 = 1;
+          moge5 = 1;
+          moge6 = 1;
+          moge7 = 1;
+          moge8 = 1;
+          moge9 = 1;
+          box2.classList.remove("blue");
+          box5.classList.remove("blue");
+          box8.classList.remove("blue");
+
+          box2.classList.remove("green");
+          box5.classList.remove("green");
+          box8.classList.remove("green");
+
+          box2.classList.add("red");
+          box5.classList.add("red");
+          box8.classList.add("red");
+          winoo = 1;
+
+          czaso();
+        } else if (ile == 0 && winoo == 0) {
+          ile = 9;
+          setTimeout("resecik()", 100);
+          // reset();
+        }
+      }
+    </script>
+  </body>
+</html>
